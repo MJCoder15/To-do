@@ -4,68 +4,69 @@ const Adder = () => {
 
     const [addTasks, setAddTasks] = useState([]);
 
-    const [inputValue,setInputValue] = useState({
-        task:""
+    const [inputValue, setInputValue] = useState({
+        task: ""
     });
 
-    const handleChange = (event)=>{
-        event.preventDefault
-        const {name,value} = event.target;
+    const handleChange = (event) => {
+        // event.preventDefault
+        const { name, value } = event.target;
 
-        setInputValue(prevState =>{
-            return{
+        setInputValue(prevState => {
+            return {
                 ...prevState,
-                [name]:value
+                [name]: value
             }
         });
 
     }
-    
+
     // console.log(inputValue);
 
-    const addTask = ()=>{
+    const addTask = () => {
         if (inputValue.task !== "") {
             setAddTasks([...addTasks, inputValue.task]);
             setInputValue({ task: "" });
         }
     }
 
-    const removeTask = ()=>{
-        
+    const removeTask = () => {
+
     }
 
-  return (
-    <div className='container'>
-        <div className='inputs flex items-center justify-center mt-[10rem] w-[100vw] flex-col' >
-            
-            <div>
+    return (
+        <div className='container'>
+            <div className='inputs flex items-center justify-center mt-[10rem] w-[100vw] flex-col' >
 
-                <input type="text" className='w-[620px] bg-red-200 text-white border-slate-800 p-3 font-semibold rounded-md' name="task" placeholder='Add Your Task' onChange={handleChange} value={inputValue.task} />
+                <div>
 
-                <button className='bg-black text-white px-5 py-3 m-2 rounded-md' onClick={addTask}>Add</button>
-            </div>
+                    <input type="text" className='w-[620px] bg-blue-200 text-red-500 border-emerald-800 p-3 font-bold rounded-md' name="task" placeholder='Add Your Task' onChange={handleChange} value={inputValue.task} />
 
-            <div className='w-[47%]'>
-                <ul className='  font-medium w-[41.5vw] text-center'>
-                    {
-                        addTasks.map((task, index) => (
+                    <button className='bg-green-600 text-white px-5 py-3 m-2 rounded-md' onClick={addTask}>Add</button>
+                </div>
 
-                            <div className='flex w-[730px] gap-[0.6rem]'>
-                                <li className='bg-emerald-300 w-[615px]  text-lg mt-3 py-3 rounded-md text-white' key={index}>{task}</li>
+                <div className='w-[57%]'>
 
-                                <button className='bg-red-500 w-[72px] text-white rounded-md mt-3' onClick={()=>removeTask(index)}>Remove</button>
-                            </div>
-                            
-                        ))
-                    }
-                </ul>
+                    <ul className='font-medium w-[41.5vw] text-center'>
+                        {
+                            addTasks.map((task, index) => (
 
-                
+                                <div className='flex w-[730px] gap-[0.6rem]'>
+                                    <li className='bg-emerald-300 w-[615px]  text-lg mt-3 py-3 rounded-md text-white' key={index}>{task}</li>
+
+                                    <button className='bg-red-500 w-[72px] text-white rounded-md mt-3' onClick={() => removeTask(index)}>Remove</button>
+                                </div>
+
+                            ))
+                        }
+                    </ul>
+
+
+                </div>
             </div>
         </div>
-    </div>
-    
-  )
+
+    )
 }
 
 export default Adder;
