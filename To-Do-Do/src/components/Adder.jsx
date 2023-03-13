@@ -21,8 +21,6 @@ const Adder = () => {
 
     }
 
-    // console.log(inputValue);
-
     const addTask = () => {
         if (inputValue.task !== "") {
             setAddTasks([...addTasks, inputValue.task]);
@@ -60,7 +58,6 @@ const Adder = () => {
                             ))
                         }
                     </ul>
-
 
                 </div>
             </div>
